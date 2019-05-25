@@ -75,19 +75,22 @@
         <profile>
             <id>dev</id>
             <properties>
-                <build.profile.id>dev</build.profile.id>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>config-server1</id>
+            <properties>
+                <profiles.active>config-server1</profiles.active>
             </properties>
         </profile>
         <profile>
-            <id>cloud-service1</id>
+            <id>config-server2</id>
             <properties>
-                <build.profile.id>cloud-service1</build.profile.id>
-            </properties>
-        </profile>
-        <profile>
-            <id>cloud-service2</id>
-            <properties>
-                <build.profile.id>cloud-service2</build.profile.id>
+                <profiles.active>config-server2</profiles.active>
             </properties>
         </profile>
     </profiles>

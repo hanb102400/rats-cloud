@@ -1,6 +1,8 @@
 
 
 spring:
+  profiles:
+    active: dev
   application:
     name: cloud-service
 
@@ -18,17 +20,16 @@ logging:
 ---
 # dev
 spring:
-  profiles: cloud-server
+  profiles: dev
   cloud:
     config:
+      discovery:
+        enabled: true
+        serviceId: config-center
       label: master
-      profile: cloud-server1
-      uri: http://localhost:18073/
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-    username: rats
-    password: 123456
+      profile: dev
+server:
+  port:  18081
 
 ---
 # cloud-server1

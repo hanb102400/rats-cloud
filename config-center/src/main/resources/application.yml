@@ -1,5 +1,7 @@
 
 spring:
+  profiles:
+    active: dev
   application:
     name: config-center
   cloud:
@@ -18,6 +20,12 @@ eureka:
     service-url:
       defaultZone: ${eureka.server1},${eureka.server2}
 
+---
+# dev
+spring:
+  profiles: dev
+server:
+  port: 18073
 
 ---
 # config-server1

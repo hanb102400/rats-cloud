@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rats</groupId>
-    <artifactId>register</artifactId>
+    <artifactId>register-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>register</name>
+    <name>register-center</name>
     <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
@@ -78,15 +78,25 @@
 
     <profiles>
         <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
             <id>eureka-server1</id>
             <properties>
-                <build.profile.id>eureka-server1</build.profile.id>
+                <profiles.active>eureka-server1</profiles.active>
             </properties>
+
         </profile>
         <profile>
             <id>eureka-server2</id>
             <properties>
-                <build.profile.id>eureka-server2</build.profile.id>
+                <profiles.active>eureka-server2</profiles.active>
             </properties>
         </profile>
     </profiles>

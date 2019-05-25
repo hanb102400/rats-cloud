@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.rats</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>cloud-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>common</name>
+    <name>cloud-common</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -66,6 +66,30 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>config-server1</id>
+            <properties>
+                <profiles.active>config-server1</profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>config-server2</id>
+            <properties>
+                <profiles.active>config-server2</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
