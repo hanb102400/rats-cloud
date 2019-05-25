@@ -1,0 +1,39 @@
+
+spring:
+  application:
+    name: config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sxt102400/cloud-config.git
+          search-paths: cloud-config
+          username:
+          password:
+
+eureka:
+  server1: http://eureka-server1:18071/eureka/
+  server2: http://eureka-server2:18072/eureka/
+  client:
+    service-url:
+      defaultZone: ${eureka.server1},${eureka.server2}
+
+
+---
+# config-server1
+spring:
+  profiles: config-server1
+server:
+  port: 18073
+
+---
+# config-server2
+spring:
+  profiles: config-server2
+server:
+  port: 18074
+
+
+
+
+

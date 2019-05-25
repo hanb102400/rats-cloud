@@ -1,0 +1,60 @@
+
+
+spring:
+  application:
+    name: cloud-service
+
+eureka:
+  server1: http://eureka-server1:18071/eureka/
+  server2: http://eureka-server2:18072/eureka/
+  client:
+    service-url:
+      defaultZone: ${eureka.server1},${eureka.server2}
+
+logging:
+  level:
+    root: warn
+
+---
+# dev
+spring:
+  profiles: cloud-server
+  cloud:
+    config:
+      label: master
+      profile: cloud-server1
+      uri: http://localhost:18073/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+    username: rats
+    password: 123456
+
+---
+# cloud-server1
+server:
+  port:  18081
+spring:
+  profiles: cloud-server1
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-center
+      label: master
+      profile: cloud-server1
+
+---
+# cloud-server2
+server:
+  port:  18082
+spring:
+  profiles: cloud-server2
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-center
+      label: master
+      profile: cloud-server2
+      uri: http://localhost:18073/

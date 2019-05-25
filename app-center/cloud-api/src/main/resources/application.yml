@@ -1,0 +1,20 @@
+
+server:
+  port: 18085
+
+spring:
+  application:
+    name: cloud-api
+
+eureka:
+  server1: http://eureka-server1:18071/eureka/
+  server2: http://eureka-server2:18072/eureka/
+  client:
+    service-url:
+      defaultZone: ${eureka.server1},${eureka.server2}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

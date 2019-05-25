@@ -1,0 +1,46 @@
+
+spring:
+  application:
+    name: config-center
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT `KEY`, `VALUE` from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+  datasource:
+    url=jdbc: mysql://localhost:3306/config_db
+    username: rats
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  server1: http://eureka-server1:18071/eureka/
+  server2: http://eureka-server2:18072/eureka/
+  client:
+    service-url:
+      defaultZone: ${eureka.server1},${eureka.server2}
+
+---
+# config-server1
+spring:
+  profiles: config-sql-server1
+server:
+  port: 18073
+
+---
+# config-server2
+spring:
+  profiles: config-sql-server2
+server:
+  port: 18074
+
+
+
+
+
+
+
+
+

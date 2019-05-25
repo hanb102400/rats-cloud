@@ -1,0 +1,49 @@
+
+spring:
+  application:
+    name: register-center
+
+register:
+  server1: http://eureka-server1:18071/eureka/
+  server2: http://eureka-server2:18072/eureka/
+
+---
+server:
+  port: 18071
+spring:
+  profiles: eureka-server1
+# =========================================
+# hosts文件需要配置127.0.0.1 eureka-server1
+# java -jar XXX.jar --spring.profiles.active=eureka-server1
+eureka:
+  instance:
+    hostname: eureka-server1
+  client:
+    # 以下两项设置为false，作为注册中心，避免注册自己
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${register.server2}
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+
+---
+server:
+  port: 18072
+spring:
+  profiles: eureka-server2
+# =========================================
+# hosts文件需要配置127.0.0.1 eureka-server1
+# java -jar XXX.jar --spring.profiles.active=eureka-server1
+eureka:
+  instance:
+    hostname: eureka-server2
+  client:
+    # 以下两项设置为false，作为注册中心，避免注册自己
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${register.server1}
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
